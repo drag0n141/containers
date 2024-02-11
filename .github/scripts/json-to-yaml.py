@@ -17,7 +17,7 @@ def json_to_yaml(subdir, file):
     os.remove(json_file)
 
 
-if __name__ == "__master__":
+if __name__ == "__main__":
 
     for subdir, dirs, files in os.walk("./apps"):
         for f in files:
