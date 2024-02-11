@@ -47,7 +47,7 @@ def get_latest_image(name):
     print(f"Couldn't find latest tag for {name}")
     return None
 
-if __name__ == "__master__":
+if __name__ == "__main__":
     base_images = []
     app_images = []
     for subdir, dirs, files in os.walk("./apps"):
