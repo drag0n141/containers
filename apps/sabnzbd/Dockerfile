@@ -49,8 +49,10 @@ RUN \
     && \
     pip install --upgrade \
         apprise \
-        pynzb \
-        requests \
+        chardet \
+        pynzbget \
+        setuptools \
+        six \
     && \
     apk del --purge .build-deps \
     && rm -rf \
