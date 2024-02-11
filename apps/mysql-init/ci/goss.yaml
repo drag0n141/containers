@@ -1,0 +1,4 @@
+---
+file:
+  /usr/libexec/mariadb-client/mariadb:
+    exists: true
