@@ -67,7 +67,8 @@ Each Image will be built with a `latest` tag, along with tags specific to it's v
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[postgres-init]() | stable | ghcr.io/drag0n141/postgres-init |
+[postgres-init](https://github.com/drag0n141/containers/pkgs/container/postgres-init) | stable | ghcr.io/drag0n141/postgres-init |![16](https://img.shields.io/badge/16-blue?style=flat-square) ![16.2](https://img.shields.io/badge/16.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[sabnzbd]() | stable | ghcr.io/drag0n141/sabnzbd |
 
 
 ## Contributing
