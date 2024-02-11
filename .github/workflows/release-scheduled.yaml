@@ -19,7 +19,7 @@ on:
         default: false
         required: true
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 5 * * 4"
 
 jobs:
   simple-checks:
