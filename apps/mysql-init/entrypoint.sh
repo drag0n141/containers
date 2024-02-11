@@ -18,6 +18,7 @@ if [[ -z "${INIT_MYSQL_HOST}"       ||
     exit 1
 fi
 
+# These env are for the mysql CLI
 export MYSQL_HOST="${INIT_MYSQL_HOST}"
 export USER="${INIT_MYSQL_SUPER_USER}"
 export MYSQL_PWD="${INIT_MYSQL_SUPER_PASS}"
