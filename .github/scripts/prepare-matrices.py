@@ -148,7 +148,7 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
         imagesToBuild["images"].append(toBuild)
     return imagesToBuild
 
-if __name__ == "__master__":
+if __name__ == "__main__":
     apps = sys.argv[1]
     forRelease = sys.argv[2] == "true"
     force = sys.argv[3] == "true"
