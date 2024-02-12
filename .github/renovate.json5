@@ -5,10 +5,13 @@
     "docker:enableMajor",
     ":dependencyDashboard",
     ":disableRateLimiting",
-    ":semanticCommits"
+    ":semanticCommits",
+    ":automergeDigest",
+    "helpers:pinGitHubActionDigests"
   ],
   "onboarding": false,
   "requireConfig": "optional",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"]
+  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
+  "rebaseWhen": "conflicted"
 }
