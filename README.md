@@ -68,7 +68,7 @@ Each Image will be built with a `latest` tag, along with tags specific to it's v
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
 [autoscan]() | stable | ghcr.io/drag0n141/autoscan |
-[cni-plugins]() | stable | ghcr.io/drag0n141/cni-plugins |
+[cni-plugins](https://github.com/drag0n141/containers/pkgs/container/cni-plugins) | stable | ghcr.io/drag0n141/cni-plugins |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.0](https://img.shields.io/badge/1.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [mysql-init](https://github.com/drag0n141/containers/pkgs/container/mysql-init) | stable | ghcr.io/drag0n141/mysql-init |![10](https://img.shields.io/badge/10-blue?style=flat-square) ![10.11](https://img.shields.io/badge/10.11-blue?style=flat-square) ![10.11.6](https://img.shields.io/badge/10.11.6-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [par2cmdline-turbo](https://github.com/drag0n141/containers/pkgs/container/par2cmdline-turbo) | stable | ghcr.io/drag0n141/par2cmdline-turbo |![1.1.1](https://img.shields.io/badge/1.1.1-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [postgres-init](https://github.com/drag0n141/containers/pkgs/container/postgres-init) | stable | ghcr.io/drag0n141/postgres-init |![16](https://img.shields.io/badge/16-blue?style=flat-square) ![16.2](https://img.shields.io/badge/16.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
