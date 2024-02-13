@@ -1,7 +1,8 @@
-FROM docker.io/library/alpine:3.19 as build
+FROM docker.io/library/alpine:3.19 as builder
 ARG VERSION
 
 WORKDIR /tmp
+
 RUN \
   apk add --no-cache \
     git \
@@ -22,7 +23,7 @@ USER kah
 COPY --from=builder /tmp/vlmcsd/bin/vlmcsd /usr/local/bin/vlmcsd
 RUN chmod +x /usr/local/bin/vlmcsd
 
-COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
+COPY ./apps/kms/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/Wind4/vlmcsd"
