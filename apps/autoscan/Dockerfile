@@ -17,7 +17,7 @@ RUN \
     esac \
     && \
     curl -fsSL -o /usr/local/bin/autoscan \
-        "https://github.com/Cloudbox/autoscan/releases/download/${VERSION}/autoscan_${VERSION}_linux_${TARGETPLATFORM}" \
+        "https://github.com/Cloudbox/autoscan/releases/download/${VERSION}/autoscan_${VERSION}_linux_${ARCH}" \
     && chmod +x /usr/local/bin/autoscan \
     && rm -rf /tmp/*
 
