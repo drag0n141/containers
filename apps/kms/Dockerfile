@@ -1,5 +1,6 @@
 FROM docker.io/library/alpine:3.19 as builder
 ARG VERSION
+ARG CHANNEL
 
 WORKDIR /tmp
 
@@ -8,11 +9,7 @@ RUN \
     git \
     make \
     build-base \
-  && git clone https://github.com/Wind4/vlmcsd.git . \
-  && if [ -n "$VERSION" ]; then \
-    NUMBER_COMMITS_TO_REVERT=$(( $(git rev-list --count --first-parent HEAD) - $(echo "${VERSION}" | cut -d "." -f3) )); \
-    git checkout "master~$NUMBER_COMMITS_TO_REVERT"; \
-  fi \
+  && git clone --branch ${CHANNEL} https://github.com/Wind4/vlmcsd.git . \
   && cd vlmcsd/ \
   && make
 
