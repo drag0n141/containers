@@ -1,4 +1,0 @@
----
-file:
-  /usr/bin/mariadb:
-    exists: true
