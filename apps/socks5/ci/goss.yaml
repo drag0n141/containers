@@ -1,0 +1,4 @@
+---
+file:
+  /usr/sbin/sockd:
+    exists: true
