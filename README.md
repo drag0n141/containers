@@ -73,7 +73,7 @@ Container | Channel | Image | Latest Tags
 [par2cmdline-turbo](https://github.com/drag0n141/containers/pkgs/container/par2cmdline-turbo) | stable | ghcr.io/drag0n141/par2cmdline-turbo |![1.1.1](https://img.shields.io/badge/1.1.1-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [postgres-init](https://github.com/drag0n141/containers/pkgs/container/postgres-init) | stable | ghcr.io/drag0n141/postgres-init |![16](https://img.shields.io/badge/16-blue?style=flat-square) ![16.2](https://img.shields.io/badge/16.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [sabnzbd](https://github.com/drag0n141/containers/pkgs/container/sabnzbd) | stable | ghcr.io/drag0n141/sabnzbd |![4](https://img.shields.io/badge/4-blue?style=flat-square) ![4.2](https://img.shields.io/badge/4.2-blue?style=flat-square) ![4.2.2](https://img.shields.io/badge/4.2.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
-[socks5]() | stable | ghcr.io/drag0n141/socks5 |
+[socks5](https://github.com/drag0n141/containers/pkgs/container/socks5) | stable | ghcr.io/drag0n141/socks5 |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.3](https://img.shields.io/badge/1.4.3-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 
 
 ## Contributing
