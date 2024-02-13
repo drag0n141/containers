@@ -16,7 +16,7 @@ FROM ghcr.io/drag0n141/alpine:latest@sha256:770611700350cc30008a95952e9808c0dddf
 
 USER kah
 
-COPY --from=builder /tmp/vlmcsd/bin/vlmcsd /usr/local/bin/vlmcsd
+COPY --from=builder /tmp/bin/vlmcsd /usr/local/bin/vlmcsd
 RUN chmod +x /usr/local/bin/vlmcsd
 
 COPY ./apps/kms/entrypoint.sh /entrypoint.sh
