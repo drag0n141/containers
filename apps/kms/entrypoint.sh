@@ -2,6 +2,5 @@
 
 #shellcheck disable=SC2086
 exec \
-    /usr/local/bin/vlmcsd \
-        - D -e \
+    /usr/local/bin/vlmcsd - D -e \
         "$@"
