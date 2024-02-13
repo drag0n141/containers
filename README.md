@@ -70,10 +70,29 @@ Container | Channel | Image | Latest Tags
 [autoscan](https://github.com/drag0n141/containers/pkgs/container/autoscan) | stable | ghcr.io/drag0n141/autoscan |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.0](https://img.shields.io/badge/1.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [cni-plugins](https://github.com/drag0n141/containers/pkgs/container/cni-plugins) | stable | ghcr.io/drag0n141/cni-plugins |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.0](https://img.shields.io/badge/1.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [kms](https://github.com/drag0n141/containers/pkgs/container/kms) | master | ghcr.io/drag0n141/kms |![latest](https://img.shields.io/badge/latest-green?style=flat-square) ![svn1113](https://img.shields.io/badge/svn1113-blue?style=flat-square)
+[lidarr]() | master | ghcr.io/drag0n141/lidarr |
+[lidarr-develop]() | develop | ghcr.io/drag0n141/lidarr-develop |
+[lidarr-nightly]() | nightly | ghcr.io/drag0n141/lidarr-nightly |
+[lidarr-plugins]() | plugins | ghcr.io/drag0n141/lidarr-plugins |
 [par2cmdline-turbo](https://github.com/drag0n141/containers/pkgs/container/par2cmdline-turbo) | stable | ghcr.io/drag0n141/par2cmdline-turbo |![1.1.1](https://img.shields.io/badge/1.1.1-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[plex]() | stable | ghcr.io/drag0n141/plex |
+[plex-beta]() | beta | ghcr.io/drag0n141/plex-beta |
 [postgres-init](https://github.com/drag0n141/containers/pkgs/container/postgres-init) | stable | ghcr.io/drag0n141/postgres-init |![16](https://img.shields.io/badge/16-blue?style=flat-square) ![16.2](https://img.shields.io/badge/16.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[prowlarr]() | master | ghcr.io/drag0n141/prowlarr |
+[prowlarr-develop]() | develop | ghcr.io/drag0n141/prowlarr-develop |
+[prowlarr-nightly]() | nightly | ghcr.io/drag0n141/prowlarr-nightly |
+[radarr]() | master | ghcr.io/drag0n141/radarr |
+[radarr-develop]() | develop | ghcr.io/drag0n141/radarr-develop |
+[radarr-nightly]() | nightly | ghcr.io/drag0n141/radarr-nightly |
+[readarr-develop]() | develop | ghcr.io/drag0n141/readarr-develop |
+[readarr-nightly]() | nightly | ghcr.io/drag0n141/readarr-nightly |
 [sabnzbd](https://github.com/drag0n141/containers/pkgs/container/sabnzbd) | stable | ghcr.io/drag0n141/sabnzbd |![4](https://img.shields.io/badge/4-blue?style=flat-square) ![4.2](https://img.shields.io/badge/4.2-blue?style=flat-square) ![4.2.2](https://img.shields.io/badge/4.2.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [socks5](https://github.com/drag0n141/containers/pkgs/container/socks5) | stable | ghcr.io/drag0n141/socks5 |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.3](https://img.shields.io/badge/1.4.3-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[sonarr]() | main | ghcr.io/drag0n141/sonarr |
+[sonarr-develop]() | develop | ghcr.io/drag0n141/sonarr-develop |
+[tautulli]() | master | ghcr.io/drag0n141/tautulli |
+[theme-park]() | stable | ghcr.io/drag0n141/theme-park |
+[volsync]() | stable | ghcr.io/drag0n141/volsync |
 
 
 ## Contributing
