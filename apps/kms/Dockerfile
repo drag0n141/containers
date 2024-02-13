@@ -1,13 +1,15 @@
 FROM docker.io/library/alpine:3.19 as build
 ARG TARGETARCH
 ARG VERSION
+ARG CHANNEL
+
 WORKDIR /tmp
 RUN \
   apk add --no-cache \
     git \
     make \
     build-base \
-  && git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git \
+  && git clone --branch ${CHANNEL} --single-branch https://github.com/Wind4/vlmcsd.git \
   && cd vlmcsd/ \
   && make
 
