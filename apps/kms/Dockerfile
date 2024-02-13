@@ -9,7 +9,7 @@ RUN \
     git \
     make \
     build-base \
-  && git clone --branch ${CHANNEL} --single-branch https://github.com/Wind4/vlmcsd.git \
+  && git clone --branch ${CHANNEL} --single-branch https://github.com/Wind4/vlmcsd.git . \
   && cd vlmcsd/ \
   && make
 
