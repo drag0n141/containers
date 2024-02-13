@@ -14,22 +14,12 @@ RUN \
     case "${TARGETPLATFORM}" in \
         'linux/amd64') export ARCH='amd64' ;; \
         'linux/arm64') export ARCH='arm64' ;; \
-RUN \
+    esac \
+    && \
     curl -fsSL -o /usr/local/bin/autoscan \
         "https://github.com/Cloudbox/autoscan/releases/download/${VERSION}/autoscan_${VERSION}_linux_${TARGETPLATFORM}" \
-    && \
-    chmod +x /usr/local/bin/autoscan \
-
-# Install packages
-RUN \
-    apk add --no-cache \
-        ca-certificates \
-        python3 \
-        py3-pip \
-        p7zip \
-    && \
-    rm -rf \
-        /tmp/*
+    && chmod +x /usr/local/bin/autoscan \
+    && rm -rf /tmp/*
 
 USER kah
 COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
