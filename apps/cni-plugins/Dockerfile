@@ -1,7 +1,7 @@
 FROM docker.io/library/alpine:3.19.1
-USER root
 ARG TARGETARCH
 ARG VERSION
+
 RUN apk add --no-cache --virtual .build-deps curl \
     && mkdir /plugins \
     && \
@@ -9,4 +9,6 @@ RUN apk add --no-cache --virtual .build-deps curl \
         | tar xzf - -C /plugins \
     && apk del --purge .build-deps \
     && rm -rf /tmp/*
+
+USER root
 CMD cp /plugins/* /host/opt/cni/bin
