@@ -10,7 +10,6 @@ RUN \
     make \
     build-base \
   && git clone --branch ${CHANNEL} https://github.com/Wind4/vlmcsd.git . \
-  && cd vlmcsd/ \
   && make
 
 FROM ghcr.io/drag0n141/alpine:latest@sha256:770611700350cc30008a95952e9808c0dddf3e829d076bb1023953d3e5370664
