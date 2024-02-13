@@ -7,11 +7,11 @@ on:
       appsToBuild:
         required: false
         type: string
-        default: ''
+        default: ""
       channelsToBuild:
         required: false
         type: string
-        default: ''
+        default: ""
       pushImages:
         required: false
         default: false
@@ -92,7 +92,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
+        image:
+          ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
     permissions:
       contents: read
       packages: write
@@ -258,7 +259,7 @@ jobs:
       - name: Download Digests
         uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe # v4
         with:
-          pattern: ${{ matrix.image.name }}-*
+          pattern: "${{ matrix.image.name }}-{linux,darwin}-{amd64,arm64}"
           merge-multiple: true
           path: /tmp/${{ matrix.image.name }}
 
