@@ -8,7 +8,8 @@ ARG CHANNEL
 RUN apk add --no-cache ca-certificates dante-server~"${VERSION}"
 
 USER kah
-COPY ./apps/socks5/root/ /
+COPY ./apps/socks5/sockd.conf /app/sockd.conf
+COPY ./apps/socks5/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/notpeter/dante"
