@@ -11,5 +11,5 @@ fi
 #shellcheck disable=SC2086
 exec \
     /usr/sbin/sockd \
-        -f /app/dante/sockd.conf \
+        -f /config/sockd.conf \
         "$@"
