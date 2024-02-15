@@ -9,8 +9,6 @@
     ":automergeDigest",
     "helpers:pinGitHubActionDigests"
   ],
-  "onboarding": false,
-  "requireConfig": "optional",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
   "rebaseWhen": "conflicted"
