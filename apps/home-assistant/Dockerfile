@@ -72,6 +72,7 @@ RUN \
         cython \
         pip \
         pyparsing \
+        py_mini_racer \
         setuptools \
         wheel
 
