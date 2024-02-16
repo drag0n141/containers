@@ -26,7 +26,7 @@ RUN apk add --no-cache \
     && \
     pip install --upgrade pip \
     && \
-    pip install --no-cache-dir getmail6=="${VERSION}" \
+    pip install --no-cache-dir --break-system-packages getmail6=="${VERSION}" \
     && apk del --purge .build-deps \
     && rm -rf \
         /root/.cache \
