@@ -43,7 +43,7 @@ RUN \
         /tmp/*
 
 USER kah
-COPY ./apps/radical/entrypoint.sh /entrypoint.sh
+COPY ./apps/radicale/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/Kozea/Radicale"
