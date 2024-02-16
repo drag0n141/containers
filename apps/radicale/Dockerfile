@@ -29,7 +29,7 @@ RUN \
         py3-pip \
         py3-tz \
         tzdata \
-    && python3 -m pip install --upgrade pip \
+    && python3 -m pip install --upgrade --break-system-packages pip \
     && python3 -m pip install --break-system-packages radicale==$VERSION passlib[bcrypt] \
     && chown -R 568:568 /app \
     && chmod -R 755 /app \
