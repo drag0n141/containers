@@ -24,7 +24,7 @@ RUN apk add --no-cache \
         python3-dev \
         py3-pip \
     && \
-    pip install --upgrade pip \
+    pip install --upgrade --break-system-packages pip \
     && \
     pip install --no-cache-dir --break-system-packages getmail6=="${VERSION}" \
     && apk del --purge .build-deps \
