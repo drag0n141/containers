@@ -7,6 +7,7 @@
     ":disableRateLimiting",
     ":semanticCommits",
     ":automergeDigest",
+    "github>drag0n141/containers//.github/renovate/autoMerge.json5",
     "helpers:pinGitHubActionDigests"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
