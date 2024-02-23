@@ -63,6 +63,6 @@ for dbname in ${INIT_POSTGRES_DBNAME}; do
 done
 
 if [[ "${INIT_POSTGRES_USER_SUPERUSER}" == true ]]; then
-    printf "\e[1;32m%-6s\e[m\n" "Set User ${INIT_POSTGRES_USER} as superuser"
+    printf "\e[1;32m%-6s\e[m\n" "Set User ${INIT_POSTGRES_USER} as superuser ..."
     psql --command "alter user \"${INIT_POSTGRES_USER}\" with superuser;"
 fi
