@@ -2,12 +2,15 @@
 
 # This is most commonly set to the user 'postgres'
 export INIT_POSTGRES_SUPER_USER=${INIT_POSTGRES_SUPER_USER:-postgres}
+# This is most commonly set to 'false'
+export INIT_POSTGRES_USER_SUPERUSER=${INIT_POSTGRES_USER_SUPERUSER:-false}
 
 if [[ -z "${INIT_POSTGRES_HOST}"       ||
       -z "${INIT_POSTGRES_SUPER_PASS}" ||
       -z "${INIT_POSTGRES_USER}"       ||
       -z "${INIT_POSTGRES_PASS}"       ||
-      -z "${INIT_POSTGRES_DBNAME}"
+      -z "${INIT_POSTGRES_DBNAME}"     ||
+      -z "${INIT_POSTGRES_USER_SUPERUSER}"
 ]]; then
     printf "\e[1;32m%-6s\e[m\n" "Invalid configuration - missing a required environment variable"
     [[ -z "${INIT_POSTGRES_HOST}" ]]       && printf "\e[1;32m%-6s\e[m\n" "INIT_POSTGRES_HOST: unset"
@@ -15,6 +18,7 @@ if [[ -z "${INIT_POSTGRES_HOST}"       ||
     [[ -z "${INIT_POSTGRES_USER}" ]]       && printf "\e[1;32m%-6s\e[m\n" "INIT_POSTGRES_USER: unset"
     [[ -z "${INIT_POSTGRES_PASS}" ]]       && printf "\e[1;32m%-6s\e[m\n" "INIT_POSTGRES_PASS: unset"
     [[ -z "${INIT_POSTGRES_DBNAME}" ]]     && printf "\e[1;32m%-6s\e[m\n" "INIT_POSTGRES_DBNAME: unset"
+    [[ -z "${INIT_POSTGRES_USER_SUPERUSER}" ]]     && printf "\e[1;32m%-6s\e[m\n" "INIT_POSTGRES_USER_SUPERUSER: unset"
     exit 1
 fi
 
@@ -57,3 +61,8 @@ for dbname in ${INIT_POSTGRES_DBNAME}; do
     printf "\e[1;32m%-6s\e[m\n" "Update User Privileges on Database ..."
     psql --command "grant all privileges on database \"${dbname}\" to \"${INIT_POSTGRES_USER}\";"
 done
+
+if [[ "${INIT_POSTGRES_USER_SUPERUSER}" == true ]]; then
+    printf "\e[1;32m%-6s\e[m\n" "Set User ${INIT_POSTGRES_USER} as superuser"
+    psql --command "alter user \"${INIT_POSTGRES_USER}\" with superuser;"
+fi
