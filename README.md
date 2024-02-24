@@ -67,7 +67,7 @@ Each Image will be built with a `latest` tag, along with tags specific to it's v
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[autorestic]() | master | ghcr.io/drag0n141/autorestic |
+[autorestic](https://github.com/drag0n141/containers/pkgs/container/autorestic) | master | ghcr.io/drag0n141/autorestic |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.7](https://img.shields.io/badge/1.7-blue?style=flat-square) ![1.7.11](https://img.shields.io/badge/1.7.11-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [autoscan](https://github.com/drag0n141/containers/pkgs/container/autoscan) | stable | ghcr.io/drag0n141/autoscan |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.0](https://img.shields.io/badge/1.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [cni-plugins](https://github.com/drag0n141/containers/pkgs/container/cni-plugins) | stable | ghcr.io/drag0n141/cni-plugins |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.0](https://img.shields.io/badge/1.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [getmail](https://github.com/drag0n141/containers/pkgs/container/getmail) | stable | ghcr.io/drag0n141/getmail |![6.18.13](https://img.shields.io/badge/6.18.13-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
