@@ -5,6 +5,9 @@ FROM ghcr.io/drag0n141/alpine:latest@sha256:770611700350cc30008a95952e9808c0dddf
 ARG TARGETPLATFORM
 ARG VERSION
 
+ENV \
+  AUTORESTIC_CONFIG="/config/autorestic.yaml"
+
 #hadolint ignore=DL3018
 RUN apk add --no-cache ca-certificates bash bzip2 curl docker-cli
 #hadolint ignore=DL3059
@@ -19,7 +22,7 @@ RUN \
     curl -fsSL -o /tmp/autorestic.bz2 \
         "https://github.com/cupcakearmy/autorestic/releases/download/v${VERSION}/autorestic_${VERSION}_linux_${ARCH}.bz2" \
     && \
-    bzip2 -dc /tmp/autorestic.bz2  > /usr/local/bin/autorestic \
+    bzip2 -dc /tmp/autorestic.bz2 > /usr/local/bin/autorestic \
     && \
     chown -R root:root /usr/local/bin \
     && chmod -R 755 /usr/local/bin \
