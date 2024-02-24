@@ -18,6 +18,7 @@ RUN \
     && \
     curl -fsSL -o /tmp/autorestic.bz2 \
         "https://github.com/cupcakearmy/autorestic/releases/download/v${VERSION}/autorestic_${VERSION}_linux_${ARCH}.bz2" \
+    && \
     bzip2 -dc /tmp/autorestic.bz2  > /usr/local/bin/autorestic \
     && \
     chown -R root:root /usr/local/bin \
