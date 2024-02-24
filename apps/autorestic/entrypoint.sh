@@ -2,7 +2,7 @@
 
 #shellcheck disable=SC2086
 exec \
-    /usr/local/bin/autorestic autorestic -c /config/config.yml \
+    /usr/local/bin/autorestic -c /config/config.yml \
         cron "$@"
 
 exec \
