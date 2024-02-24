@@ -1,8 +1,4 @@
 ---
-process:
-  crond:
-    running: true
-
 file:
   /usr/local/bin/restic:
     exists: true
