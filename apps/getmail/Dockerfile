@@ -9,6 +9,7 @@ ENV \
     PIP_ROOT_USER_ACTION=ignore \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_BREAK_SYSTEM_PACKAGES=1
     CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
 #hadolint ignore=DL3018,DL3013
@@ -24,9 +25,9 @@ RUN apk add --no-cache \
         python3-dev \
         py3-pip \
     && \
-    pip install --upgrade --break-system-packages pip \
+    pip install --upgrade pip \
     && \
-    pip install --no-cache-dir --break-system-packages getmail6=="${VERSION}" \
+    pip install --no-cache-dir getmail6=="${VERSION}" \
     && apk del --purge .build-deps \
     && rm -rf \
         /root/.cache \
