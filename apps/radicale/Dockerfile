@@ -9,6 +9,7 @@ ENV \
     PIP_ROOT_USER_ACTION=ignore \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_BREAK_SYSTEM_PACKAGES=1 \
     CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
 ENV \
@@ -29,8 +30,8 @@ RUN \
         py3-pip \
         py3-tz \
         tzdata \
-    && python3 -m pip install --upgrade --break-system-packages pip \
-    && python3 -m pip install --break-system-packages radicale==$VERSION passlib[bcrypt] \
+    && python3 -m pip install --upgrade pip \
+    && python3 -m pip install radicale==$VERSION passlib[bcrypt] \
     && chown -R 568:568 /app \
     && chmod -R 755 /app \
     && mkdir -p /data \
