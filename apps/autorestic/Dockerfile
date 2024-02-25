@@ -6,7 +6,13 @@ ARG TARGETPLATFORM
 ARG VERSION
 
 ENV \
-  AUTORESTIC_CONFIG="/config/autorestic.yaml"
+    AUTORESTIC_CONFIG="/config/autorestic.yaml" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_ROOT_USER_ACTION=ignore \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_BREAK_SYSTEM_PACKAGES=1
 
 #hadolint ignore=DL3018
 RUN apk add --no-cache \
