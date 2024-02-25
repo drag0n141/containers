@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-#shellcheck disable=SC2086
-exec \
-    /usr/local/bin/autorestic -c "${AUTORESTIC_CONFIG}" \
-        check "$@"
+if [ -f "${AUTORESTIC_CONFIG}" ]; then
+   autorestic -c "${AUTORESTIC_CONFIG}" check "$@"
+fi
 
 while true; do
    autorestic -c "${AUTORESTIC_CONFIG}" --ci cron
