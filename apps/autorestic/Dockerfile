@@ -23,14 +23,14 @@ RUN apk add --no-cache \
         curl \
         docker-cli \
         py3-pip \
-        python3
+        python3 \
     && \
     apk add --no-cache --virtual=.build-deps \
-        python3-dev
+        python3-dev \
     && \
     pip install --upgrade \
         pip \
-        apprise
+        apprise \
     && apk del --purge .build-deps \
     && rm -rf \
         /root/.cache \
