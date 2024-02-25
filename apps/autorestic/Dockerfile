@@ -9,7 +9,26 @@ ENV \
   AUTORESTIC_CONFIG="/config/autorestic.yaml"
 
 #hadolint ignore=DL3018
-RUN apk add --no-cache ca-certificates bash bzip2 curl docker-cli
+RUN apk add --no-cache \
+        ca-certificates \
+        bash \
+        bzip2 \
+        curl \
+        docker-cli \
+        py3-pip \
+        python3
+
+#hadolint ignore=DL3018,DL3013,DL3059
+RUN \
+    apk add --no-cache --virtual=.build-deps \
+        python3-dev
+
+#hadolint ignore=DL3018,DL3013,DL3059
+RUN \
+    pip install --upgrade \
+        pip \
+        apprise
+
 #hadolint ignore=DL3059
 RUN \
     case "${TARGETPLATFORM}" in \
