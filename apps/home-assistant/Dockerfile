@@ -1,9 +1,24 @@
-FROM ghcr.io/drag0n141/alpine:latest@sha256:770611700350cc30008a95952e9808c0dddf3e829d076bb1023953d3e5370664
+ARG VERSION
+FROM docker.io/library/alpine:3.19 as builder
+ARG VERSION
+ARG TARGETOS
+ARG TARGETARCH
+ARG TARGETVARIANT=""
+ARG TARGETPLATFORM
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=${TARGETOS} \
+    GOARCH=${TARGETARCH} \
+    GOARM=${TARGETVARIANT} \
+    GOPATH=/go
+ENV PATH $GOPATH/bin:$PATH
+#hadolint ignore=DL3018
+RUN \
+    apk add --no-cache go upx \
+    && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
+    && upx /go/bin/envsubst
 
-# https://github.com/linuxserver/docker-homeassistant
-# https://github.com/home-assistant/docker
-# https://github.com/home-assistant/docker-base
-# https://github.com/pypa/pip/issues/10788
+FROM docker.io/library/python:3.12.2-alpine3.19
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -20,7 +35,18 @@ ENV \
     PYTHONPATH="${PYTHONPATH}:/pip-packages" \
     HOME="/config"
 
+ENV UMASK="0002" \
+    TZ="Etc/UTC"
+
 WORKDIR /tmp
+
+#hadolint ignore=DL3018
+RUN \
+    apk add --no-cache \
+        ca-certificates catatonit bash \
+        bind-tools coreutils curl iputils jo \
+        jq moreutils nano pv tzdata unzip \
+        util-linux wget
 
 #hadolint ignore=DL3018
 RUN \
@@ -34,7 +60,7 @@ RUN \
         ffmpeg \
         git \
         libcap \
-        libjpeg-turbo \
+        libturbojpeg \
         libstdc++ \
         libxslt \
         mariadb-connector-c \
@@ -47,7 +73,7 @@ RUN \
         socat \
         tiff
 
-#hadolint ignore=DL3018,DL3013,DL3059
+#hadolint ignore=DL3018,DL3013,DL3059,DL4006
 RUN \
     apk add --no-cache --virtual=.build-deps \
         autoconf \
@@ -64,20 +90,16 @@ RUN \
         libxslt-dev \
         postgresql-dev \
         python3-dev \
-        unixodbc-dev
-
-#hadolint ignore=DL3018,DL3013,DL3059
-RUN \
+        unixodbc-dev \
+    && \
     pip install --upgrade \
         cython \
         pip \
         pyparsing \
         py_mini_racer \
         setuptools \
-        wheel
-
-#hadolint ignore=DL3018,DL3013,DL3059,DL4006
-RUN \
+        wheel \
+    && \
     curl -fsSL "https://github.com/home-assistant/core/archive/${VERSION}.tar.gz" \
         | tar xzf - -C /tmp --strip-components=1 \
     && \
@@ -123,9 +145,32 @@ RUN \
         /root/.cargo \
         /tmp/*
 
+#hadolint ignore=DL3018
+RUN \
+    addgroup -S kah --gid 568 \
+        && adduser -S kah -G kah --uid 568 \
+    && \
+    mkdir -p /config \
+    && chown -R kah:kah /config \
+    && chmod -R 775 /config \
+    && printf "/bin/bash /scripts/greeting.sh\n" > /etc/profile.d/greeting.sh \
+    && printf "umask %d\n" "${UMASK}" > /etc/profile.d/umask.sh \
+    && ln -s /usr/bin/vi   /usr/local/bin/vi \
+    && ln -s /usr/bin/vi   /usr/local/bin/vim \
+    && ln -s /usr/bin/nano /usr/local/bin/nano \
+    && ln -s /usr/bin/nano /usr/local/bin/neovim \
+    && ln -s /usr/bin/nano /usr/local/bin/emacs \
+    && ln -s /usr/bin/catatonit /sbin/tini \
+    && rm -rf /tmp/*
+
+COPY --from=builder /go/bin/envsubst /usr/local/bin/envsubst
+COPY ./apps/home-assistant/scripts /scripts
+VOLUME ["/config"]
+
 WORKDIR /app
 USER kah
 COPY ./apps/home-assistant/entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/home-assistant/core"
