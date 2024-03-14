@@ -164,7 +164,6 @@ RUN \
     && rm -rf /tmp/*
 
 COPY --from=builder /go/bin/envsubst /usr/local/bin/envsubst
-COPY ./apps/home-assistant/scripts /scripts
 VOLUME ["/config"]
 
 WORKDIR /app
