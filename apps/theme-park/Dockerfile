@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1.25.4
+FROM nginxinc/nginx-unprivileged:1.25.5
 
 ARG TARGETPLATFORM
 ARG VERSION
