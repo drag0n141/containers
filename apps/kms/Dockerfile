@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.19 as builder
+FROM docker.io/library/alpine:3.20 as builder
 ARG VERSION
 ARG CHANNEL
 
