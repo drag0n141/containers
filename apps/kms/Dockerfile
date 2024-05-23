@@ -16,8 +16,6 @@ RUN \
 
 FROM docker.io/library/alpine:3.20
 
-USER kah
-
 COPY --chown=568:568 --from=builder /tmp/bin/vlmcsd /usr/local/bin/vlmcsd
 RUN chmod +x /usr/local/bin/vlmcsd
 
