@@ -35,7 +35,7 @@ RUN \
         /root/.cargo \
         /tmp/*
 
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./apps/radicale/entrypoint.sh /entrypoint.sh
 
 VOLUME [ "/config" "/data" ]
 CMD ["/entrypoint.sh"]
