@@ -14,7 +14,7 @@ ENV \
 ENV \
     RADICALE_CONFIG_FILE=/config/config
 
-COPY ./config /app/config.default
+COPY ./apps/radicale/config /app/config.default
 
 USER root
 
