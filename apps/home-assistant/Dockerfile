@@ -90,7 +90,6 @@ RUN \
     && \
     uv pip install --system --only-binary=:all: --find-links "${HOMEASSISTANT_WHEELS}" \
         homeassistant=="${VERSION}" \
-        py_mini_racer \
     && \
     mkdir -p /config \
     && chown nobody:nogroup -R /config \
