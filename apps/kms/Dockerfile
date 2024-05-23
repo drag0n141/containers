@@ -16,10 +16,18 @@ RUN \
 
 FROM docker.io/library/alpine:3.20
 
+#hadolint ignore=DL3018
+RUN \
+    apk add --no-cache \
+        bash \
+        ca-certificates \
+        catatonit
+
+COPY ./apps/kms/entrypoint.sh /entrypoint.sh
 COPY --from=builder /tmp/bin/vlmcsd /usr/local/bin/vlmcsd
 RUN chmod +x /usr/local/bin/vlmcsd
 
-COPY ./apps/kms/entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/Wind4/vlmcsd"
