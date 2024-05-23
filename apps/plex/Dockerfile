@@ -1,20 +1,41 @@
-FROM ghcr.io/drag0n141/ubuntu:jammy-20240427@sha256:86a69b406222d73ec70d0fab452d8be7c3ca7a6f3e5491cdd5da5fa6995ba51f
+FROM docker.io/library/ubuntu:24.04
 
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
+ENV DEBCONF_NONINTERACTIVE_SEEN="true" \
+    DEBIAN_FRONTEND="noninteractive" \
+    APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE="DontWarn"
+
 ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
-    PLEX_DOWNLOAD="https://downloads.plex.tv/plex-media-server-new" \
     PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="/config/Library/Application Support" \
     PLEX_MEDIA_SERVER_HOME="/usr/lib/plexmediaserver" \
     PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS="6" \
-    PLEX_MEDIA_SERVER_USER="kah" \
     PLEX_MEDIA_SERVER_INFO_VENDOR="Docker" \
-    PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (drag0n141)"
+    PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (DrAg0n141)"
+
+ENV UMASK="0002" \
+    TZ="Etc/UTC"
+
+USER root
+WORKDIR /app
 
 # hadolint ignore=DL3008,DL3015,SC2039,SC2086
 RUN \
+    apt-get update \
+    && \
+    apt-get install -y --no-install-recommends --no-install-suggests \
+        bash \
+        ca-certificates \
+        catatonit \
+        curl \
+        jq \
+        nano \
+        tzdata \
+        uuid-runtime \
+        xmlstarlet \
+    && \
     case "${TARGETPLATFORM}" in \
         'linux/amd64') \
             export ARCH='amd64'; \
@@ -24,18 +45,11 @@ RUN \
         ;; \
     esac \
     && \
-    apt-get -qq update \
-    && \
-    apt-get -qq install -y \
-        ca-certificates \
-        libusb-dev \
-        uuid-runtime \
-        xmlstarlet \
-    && \
     curl -fsSL -o /tmp/plex.deb \
-        "${PLEX_DOWNLOAD}/${VERSION}/debian/plexmediaserver_${VERSION}_${ARCH}.deb" \
+        "https://downloads.plex.tv/plex-media-server-new/${VERSION}/debian/plexmediaserver_${VERSION}_${ARCH}.deb" \
     && \
     dpkg -i --force-confold /tmp/plex.deb \
+    && chmod -R 755 "${PLEX_MEDIA_SERVER_HOME}" \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get autoremove -y \
     && apt-get clean \
@@ -44,12 +58,13 @@ RUN \
         /etc/default/plexmediaserver \
         /tmp/* \
         /var/lib/apt/lists/* \
-        /var/tmp/ \
-    && chown -R root:root /app \
-    && chmod -R 755 "${PLEX_MEDIA_SERVER_HOME}" \
-    && printf "umask %d\n" "${UMASK}" >> /etc/bash.bashrc
+        /var/tmp/
 
-WORKDIR "${PLEX_MEDIA_SERVER_HOME}"
-USER kah
 COPY ./apps/plex/entrypoint.sh /entrypoint.sh
+
+USER nobody:nogroup
+WORKDIR /config
+VOLUME ["/config"]
+
+ENTRYPOINT [ "/usr/bin/catatonit", "--" ]
 CMD ["/entrypoint.sh"]
