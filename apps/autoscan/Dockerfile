@@ -10,8 +10,6 @@ ENV \
   AUTOSCAN_LOG="/config/activity.log" \
   AUTOSCAN_VERBOSITY="0"
 
-USER root
-
 #hadolint ignore=DL3018,DL3059
 RUN \
     apk add --no-cache \
@@ -40,11 +38,8 @@ RUN \
     && chmod +x /usr/local/bin/autoscan \
     && rm -rf /tmp/*
 
+USER root
 COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
-
-VOLUME ["/config"]
-
-ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/Cloudbox/autoscan"
