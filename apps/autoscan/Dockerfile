@@ -10,11 +10,7 @@ ENV \
   AUTOSCAN_LOG="/config/activity.log" \
   AUTOSCAN_VERBOSITY="0"
 
-ENV UMASK="0002" \
-    TZ="Etc/UTC"
-
 USER root
-WORKDIR /app
 
 #hadolint ignore=DL3018,DL3059
 RUN \
