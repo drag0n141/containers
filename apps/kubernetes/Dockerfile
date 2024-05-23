@@ -1,5 +1,6 @@
 FROM docker.io/library/alpine:3.20.0
-ARG TARGETARCH
+
+ARG TARGETPLATFORM
 ARG VERSION
 
 WORKDIR /app
