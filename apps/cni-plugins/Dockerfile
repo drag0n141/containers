@@ -1,11 +1,21 @@
 FROM docker.io/library/alpine:3.20.0
-ARG TARGETARCH
+
+ARG TARGETPLATFORM
 ARG VERSION
 
 RUN apk add --no-cache --virtual .build-deps curl \
     && mkdir /plugins \
     && \
-    curl -fsSL "https://github.com/containernetworking/plugins/releases/download/v${VERSION}/cni-plugins-linux-${TARGETARCH}-v${VERSION}.tgz" \
+    case "${TARGETPLATFORM}" in \
+        'linux/amd64') \
+            export ARCH='amd64'; \
+        ;; \
+        'linux/arm64') \
+            export ARCH='arm64'; \
+        ;; \
+    esac \
+    && \
+    curl -fsSL "https://github.com/containernetworking/plugins/releases/download/v${VERSION}/cni-plugins-linux-${ARCH}-v${VERSION}.tgz" \
         | tar xzf - -C /plugins \
     && apk del --purge .build-deps \
     && rm -rf /tmp/*
