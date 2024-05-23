@@ -67,7 +67,6 @@ Each Image will be built with a `latest` tag, along with tags specific to it's v
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[autorestic](https://github.com/drag0n141/containers/pkgs/container/autorestic) | master | ghcr.io/drag0n141/autorestic |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.8](https://img.shields.io/badge/1.8-blue?style=flat-square) ![1.8.2](https://img.shields.io/badge/1.8.2-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [autoscan](https://github.com/drag0n141/containers/pkgs/container/autoscan) | stable | ghcr.io/drag0n141/autoscan |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.4](https://img.shields.io/badge/1.4-blue?style=flat-square) ![1.4.0](https://img.shields.io/badge/1.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [cni-plugins](https://github.com/drag0n141/containers/pkgs/container/cni-plugins) | stable | ghcr.io/drag0n141/cni-plugins |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.5](https://img.shields.io/badge/1.5-blue?style=flat-square) ![1.5.0](https://img.shields.io/badge/1.5.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [getmail](https://github.com/drag0n141/containers/pkgs/container/getmail) | stable | ghcr.io/drag0n141/getmail |![6.18.14](https://img.shields.io/badge/6.18.14-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
@@ -118,14 +117,10 @@ Here's an example of how tags are created in the GitHub workflows, be careful wi
 
 | Application | Channel   | Stable  | Base    | Generated Tag               |
 |-------------|-----------|---------|---------|-----------------------------|
-| `ubuntu`    | `focal`   | `true`  | `true`  | `ubuntu:focal-latest`      |
-| `ubuntu`    | `focal`   | `true`  | `true`  | `ubuntu:focal-19880312`     |
-| `alpine`    | `3.16`    | `true`  | `true`  | `alpine:latest`            |
-| `alpine`    | `3.16`    | `true`  | `true`  | `alpine:3.16.0`             |
 | `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:3.0.8.1538` |
-| `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:latest`    |
+| `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:latest`     |
 | `sonarr`    | `main`    | `true`  | `false` | `sonarr:3.0.8.1507`         |
-| `sonarr`    | `main`    | `true`  | `false` | `sonarr:latest`            |
+| `sonarr`    | `main`    | `true`  | `false` | `sonarr:latest`             |
 
 ## Deprecations
 
