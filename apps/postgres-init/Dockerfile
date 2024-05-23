@@ -1,16 +1,23 @@
-FROM ghcr.io/drag0n141/alpine:latest@sha256:d892f81359f3562d75c3c189f0fcbf7862faa117baa3e9487ebb8996a04b1a13
+FROM docker.io/library/alpine:3.20
 
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
-#hadolint ignore=DL3018
-RUN apk add --no-cache ca-certificates postgresql16-client~"${VERSION}"
+USER root
+WORKDIR /app
 
-USER kah
+#hadolint ignore=DL3018
+RUN \
+    apk add --no-cache \
+        bash \
+        ca-certificates \
+        catatonit \
+        postgresql16-client~"${VERSION}"
 
 COPY ./apps/postgres-init/entrypoint.sh /entrypoint.sh
 
+ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/postgres/postgres"

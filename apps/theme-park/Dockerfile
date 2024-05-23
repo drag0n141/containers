@@ -1,17 +1,16 @@
-FROM nginxinc/nginx-unprivileged:1.26.0
+FROM ghcr.io/nginxinc/nginx-unprivileged:1.26
 
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
 USER root
-ENV NGINX_WEB_ROOT "/usr/share/nginx/html"
 
 #hadolint ignore=DL3008
 RUN \
-    apt-get update -qq \
+    apt-get update \
     && \
-    apt-get install -qqy --no-install-recommends --no-install-suggests python3 \
+    apt-get install -y --no-install-recommends --no-install-suggests python3 \
     && \
     curl -fsSL "https://github.com/themepark-dev/theme.park/archive/${VERSION}.tar.gz" \
       | tar xzf - -C /tmp --strip-components 1 \
@@ -20,19 +19,18 @@ RUN \
     && \
     grep -rl 'https://theme-park.dev' /tmp | xargs sed -i 's/https\:\/\/theme-park.dev//g' \
     && \
-    cp -r /tmp/css/ "${NGINX_WEB_ROOT}" \
-    && cp -r /tmp/resources/ "${NGINX_WEB_ROOT}" \
-    && cp /tmp/index.html "${NGINX_WEB_ROOT}" \
+    cp -r /tmp/css/ /usr/share/nginx/html \
+    && cp -r /tmp/resources/ /usr/share/nginx/html \
+    && cp /tmp/index.html /usr/share/nginx/html \
     && apt-get remove -y python3 \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get autoremove -y \
     && apt-get clean \
-    && chown -R nginx:nginx "${NGINX_WEB_ROOT}" \
-    && chmod -R 755 "${NGINX_WEB_ROOT}" \
+    && chown -R nginx:nginx /usr/share/nginx/html \
+    && chmod -R 755 /usr/share/nginx/html \
     && rm -rf /tmp/*
 
 USER nginx
-
-WORKDIR ${NGINX_WEB_ROOT}
+WORKDIR /usr/share/nginx/html
 
 LABEL org.opencontainers.image.source="https://github.com/themepark-dev/theme.park"

@@ -1,4 +1,5 @@
-FROM ghcr.io/drag0n141/alpine:latest@sha256:d892f81359f3562d75c3c189f0fcbf7862faa117baa3e9487ebb8996a04b1a13
+FROM docker.io/library/alpine:3.20.0
+
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
@@ -21,7 +22,7 @@ RUN \
     && chmod +x /usr/local/bin/autoscan \
     && rm -rf /tmp/*
 
-USER kah
+USER nobody:nogroup
 COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
