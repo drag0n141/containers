@@ -1,8 +1,9 @@
-FROM docker.io/library/alpine:3.19 as build
+FROM docker.io/library/alpine:3.20 as par2
 ARG TARGETARCH
 ARG VERSION
-WORKDIR /tmp
 ENV LDFLAGS="-static"
+USER root
+WORKDIR /tmp
 RUN \
     apk add --no-cache \
         autoconf \
@@ -19,7 +20,9 @@ RUN \
     && make \
     && make install
 
-FROM docker.io/library/alpine:3.19.1
-COPY --from=build /usr/local/bin/par2 /usr/local/bin/par2
+FROM docker.io/library/alpine:3.20
+
+COPY --from=par2 /usr/local/bin/par2 /usr/local/bin/par2
 RUN /usr/local/bin/par2 --help
+
 CMD ["/usr/local/bin/par2"]
