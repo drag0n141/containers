@@ -1,4 +1,6 @@
-FROM docker.io/library/alpine:3.19 as builder
+FROM docker.io/library/alpine:3.20 as builder
+
+ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 
@@ -12,9 +14,7 @@ RUN \
   && git clone --branch ${CHANNEL} https://github.com/Wind4/vlmcsd.git . \
   && make
 
-FROM ghcr.io/drag0n141/alpine:latest@sha256:d892f81359f3562d75c3c189f0fcbf7862faa117baa3e9487ebb8996a04b1a13
-
-USER kah
+FROM docker.io/library/alpine:3.20
 
 COPY --chown=568:568 --from=builder /tmp/bin/vlmcsd /usr/local/bin/vlmcsd
 RUN chmod +x /usr/local/bin/vlmcsd
