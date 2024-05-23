@@ -38,7 +38,6 @@ RUN \
     && chmod +x /usr/local/bin/autoscan \
     && rm -rf /tmp/*
 
-USER root
 COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
