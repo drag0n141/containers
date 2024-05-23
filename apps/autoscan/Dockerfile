@@ -46,8 +46,6 @@ RUN \
 
 COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
 
-USER nobody:nogroup
-WORKDIR /config
 VOLUME ["/config"]
 
 ENTRYPOINT ["/usr/bin/catatonit", "--"]
