@@ -16,7 +16,7 @@ RUN \
 
 FROM docker.io/library/alpine:3.20
 
-COPY --chown=568:568 --from=builder /tmp/bin/vlmcsd /usr/local/bin/vlmcsd
+COPY --from=builder /tmp/bin/vlmcsd /usr/local/bin/vlmcsd
 RUN chmod +x /usr/local/bin/vlmcsd
 
 COPY ./apps/kms/entrypoint.sh /entrypoint.sh

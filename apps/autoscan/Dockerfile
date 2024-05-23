@@ -10,11 +10,33 @@ ENV \
   AUTOSCAN_LOG="/config/activity.log" \
   AUTOSCAN_VERBOSITY="0"
 
-#hadolint ignore=DL3059
+ENV UMASK="0002" \
+    TZ="Etc/UTC"
+
+USER root
+WORKDIR /app
+
+#hadolint ignore=DL3018,DL3059
 RUN \
+    apk add --no-cache \
+        bash \
+        ca-certificates \
+        catatonit \
+        curl \
+        jq \
+        libintl \
+        nano \
+        sqlite-libs \
+        tzdata \
+        xmlstarlet \
+    && \
     case "${TARGETPLATFORM}" in \
-        'linux/amd64') export ARCH='amd64' ;; \
-        'linux/arm64') export ARCH='arm64' ;; \
+        'linux/amd64') \
+            export ARCH='amd64'; \
+        ;; \
+        'linux/arm64') \
+            export ARCH='arm64'; \
+        ;; \
     esac \
     && \
     curl -fsSL -o /usr/local/bin/autoscan \
@@ -22,8 +44,13 @@ RUN \
     && chmod +x /usr/local/bin/autoscan \
     && rm -rf /tmp/*
 
-USER nobody:nogroup
 COPY ./apps/autoscan/entrypoint.sh /entrypoint.sh
+
+USER nobody:nogroup
+WORKDIR /config
+VOLUME ["/config"]
+
+ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD ["/entrypoint.sh"]
 
 LABEL org.opencontainers.image.source="https://github.com/Cloudbox/autoscan"
