@@ -1,13 +1,12 @@
+ARG CRUNCHYVERSION=ubi8
 FROM docker.io/library/alpine:3.20 as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
-ARG CRUNCHYVERSION=ubi8
 
 WORKDIR /tmp
 
-#hadolint ignore=DL3018,DL3059
 RUN \
     apk add --no-cache \
         alien \
