@@ -1,4 +1,4 @@
-ARG CRUNCHYVERSION=ubi8
+ARG CRUNCHYVERSION=ubi8-16.3-1
 FROM docker.io/library/alpine:3.20 as builder
 
 ARG TARGETPLATFORM
