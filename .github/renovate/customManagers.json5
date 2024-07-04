@@ -10,7 +10,8 @@
       "matchStrings": [
         "FROM registry.developers.crunchydata.com\/crunchydata\/crunchy-postgres:ubi\d+-(?<currentValue>.*\-.*)"
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "redhat"
     }
   ]
 }
