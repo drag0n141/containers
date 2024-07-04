@@ -5,7 +5,7 @@
       "customType": "regex",
       "description": ["Process CrunchyData Postgres version"],
       "fileMatch": [
-        "Dockerfile"
+        "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$"
       ],
       "matchStrings": [
         "FROM registry.developers.crunchydata.com\/crunchydata\/crunchy-postgres:ubi\d+-(?<currentValue>.*\-.*)"
