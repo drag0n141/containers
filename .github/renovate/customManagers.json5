@@ -5,7 +5,7 @@
       "customType": "regex",
       "description": ["Process CrunchyData Postgres version"],
       "fileMatch": [
-        "^Dockerfile$"
+        "Dockerfile"
       ],
       "matchStrings": [
         "imageName: (?<depName>\\S+):(?<currentValue>-.*\\.*\\-.*)"
