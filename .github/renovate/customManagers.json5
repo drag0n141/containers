@@ -8,7 +8,7 @@
         "Dockerfile"
       ],
       "matchStrings": [
-        "imageName: (?<depName>\\S+)\\n.*?\"(?<currentValue>.*)\"\\n)"
+        "FROM (?<depName>\\S+):(?<currentValue>-.*\\.*\\-.*)"
       ],
       "datasourceTemplate": "docker"
     }
