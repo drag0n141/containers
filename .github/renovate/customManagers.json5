@@ -8,7 +8,7 @@
         "Dockerfile"
       ],
       "matchStrings": [
-        "FROM (?<depName>\\S+):(?<currentValue>.*\\-.*)"
+        "FROM registry.developers.crunchydata.com/crunchydata/crunchy-postgres:(?<currentValue>.*\\-.*)"
       ],
       "datasourceTemplate": "docker"
     }
