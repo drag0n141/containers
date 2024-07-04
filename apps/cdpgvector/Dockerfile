@@ -19,11 +19,11 @@ RUN \
         'linux/arm64') export ARCH='arm64' ;; \
     esac \
     && \
-    curl --fail -o pgvectors.deb -sSL https://github.com/tensorchord/pgvecto.rs/releases/download/v${VERSION}/vectors-pg16_${VERSION}_${ARCH}.deb && \
+    curl --fail -o pgvectors.deb -sSL https://github.com/tensorchord/pgvecto.rs/releases/download/v${VERSION}/vectors-pg16_${VERSION}_${ARCH}.deb \
     && \
-    alien -r /tmp/pgvectors.deb && \
+    alien -r /tmp/pgvectors.deb \
     && \
-    rm -f /tmp/pgvectors.deb
+    rm -f /tmp/pgvectors.deb \
     && \
     rpm2cpio /tmp/*.rpm | cpio -idmv
 
