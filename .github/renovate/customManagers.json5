@@ -1,0 +1,16 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": ["Process CrunchyData Postgres version"],
+      "fileMatch": [
+        "apps/**/Dockerfile"
+      ],
+      "matchStrings": [
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.*?\"(?<currentValue>.*)\"\\n"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
+}
