@@ -2,19 +2,7 @@
 app: cdpgvector
 semver: true
 channels:
-  - name: 14
-    platforms: ["linux/amd64", "linux/arm64"]
-    stable: true
-    tests:
-      enabled: true
-      type: cli
-  - name: 15
-    platforms: ["linux/amd64", "linux/arm64"]
-    stable: true
-    tests:
-      enabled: true
-      type: cli
-  - name: 16
+  - name: stable
     platforms: ["linux/amd64", "linux/arm64"]
     stable: true
     tests:

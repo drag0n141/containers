@@ -2,8 +2,6 @@ FROM docker.io/library/alpine:3.20 as builder
 
 ARG TARGETPLATFORM
 ARG VERSION
-ARG CHANNEL
-ARG CRUNCHYDATA
 
 WORKDIR /tmp
 
@@ -21,7 +19,7 @@ RUN \
         'linux/arm64') export ARCH='arm64' ;; \
     esac \
     && \
-    curl --fail -o pgvectors.deb -sSL https://github.com/tensorchord/pgvecto.rs/releases/download/v${VERSION}/vectors-pg${CHANNEL}_${VERSION}_${ARCH}.deb && \
+    curl --fail -o pgvectors.deb -sSL https://github.com/tensorchord/pgvecto.rs/releases/download/v${VERSION}/vectors-pg16_${VERSION}_${ARCH}.deb && \
     && \
     alien -r /tmp/pgvectors.deb && \
     && \
@@ -29,17 +27,10 @@ RUN \
     && \
     rpm2cpio /tmp/*.rpm | cpio -idmv
 
-RUN \
-    case "${VERSION}" in \
-        '14') export CRUNCHYDATA='registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.12-0' ;; \
-        '15') export CRUNCHYDATA='registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-15.7-0' ;; \
-        '15') export CRUNCHYDATA='registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.3-0' ;; \
-    esac
+FROM registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.3-0
 
-FROM ${CRUNCHYDATA}
-
-COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/lib/postgresql/${CHANNEL}/lib/vectors.so /usr/pgsql-${CHANNEL}/lib/
-COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/share/postgresql/${CHANNEL}/extension/vectors* /usr/pgsql-${CHANNEL}/share/extension/
+COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/lib/postgresql/16/lib/vectors.so /usr/pgsql-16/lib/
+COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/share/postgresql/16/extension/vectors* /usr/pgsql-16/share/extension/
 
 # Numeric User ID for Default Postgres User
 USER 26
