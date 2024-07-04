@@ -36,6 +36,10 @@ RUN \
 
 FROM registry.developers.crunchydata.com/crunchydata/crunchy-postgres:${CRUNCHYVERSION}
 
+ARG TARGETPLATFORM
+ARG VERSION
+ARG CHANNEL
+
 COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/lib/postgresql/${CHANNEL}/lib/vectors.so /usr/pgsql-${CHANNEL}/lib/
 COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/share/postgresql/${CHANNEL}/extension/vectors* /usr/pgsql-${CHANNEL}/share/extension/
 
