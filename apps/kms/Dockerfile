@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.20 AS builder
+FROM docker.io/library/alpine:3.21 AS builder
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -14,7 +14,7 @@ RUN \
   && git clone --branch ${CHANNEL} https://github.com/Wind4/vlmcsd.git . \
   && make
 
-FROM docker.io/library/alpine:3.20
+FROM docker.io/library/alpine:3.21
 
 #hadolint ignore=DL3018
 RUN \
