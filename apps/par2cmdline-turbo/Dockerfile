@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.20 AS par2
+FROM docker.io/library/alpine:3.21 AS par2
 ARG TARGETARCH
 ARG VERSION
 ENV LDFLAGS="-static"
@@ -20,7 +20,7 @@ RUN \
     && make \
     && make install
 
-FROM docker.io/library/alpine:3.20
+FROM docker.io/library/alpine:3.21
 
 COPY --from=par2 /usr/local/bin/par2 /usr/local/bin/par2
 RUN /usr/local/bin/par2 --help
