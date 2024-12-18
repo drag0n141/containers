@@ -3,8 +3,8 @@ FROM docker.io/library/alpine:3.21.0
 ARG TARGETPLATFORM
 ARG VERSION
 
-RUN apk add --no-cache --virtual .build-deps curl \
-    && mkdir /plugins \
+RUN apk add --no-cache curl tar \
+    && mkdir -p /plugins /host/opt/cni/bin \
     && \
     case "${TARGETPLATFORM}" in \
         'linux/amd64') \
@@ -16,9 +16,8 @@ RUN apk add --no-cache --virtual .build-deps curl \
     esac \
     && \
     curl -fsSL "https://github.com/containernetworking/plugins/releases/download/v${VERSION}/cni-plugins-linux-${ARCH}-v${VERSION}.tgz" \
-        | tar xzf - -C /plugins \
-    && apk del --purge .build-deps \
+        | tar xzf - -C /plugins --strip-components=1 \
+    && cp /plugins/* /host/opt/cni/bin \
     && rm -rf /tmp/*
 
 USER root
-CMD cp /plugins/* /host/opt/cni/bin
