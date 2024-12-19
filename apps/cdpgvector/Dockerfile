@@ -27,7 +27,7 @@ RUN \
     && \
     rpm2cpio /tmp/*.rpm | cpio -idmv
 
-FROM registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.6-0
+FROM registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.6-1
 
 COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/lib/postgresql/16/lib/vectors.so /usr/pgsql-16/lib/
 COPY --chown=root:root --chmod=755 --from=builder /tmp/usr/share/postgresql/16/extension/vectors* /usr/pgsql-16/share/extension/
