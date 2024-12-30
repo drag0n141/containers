@@ -6,7 +6,7 @@ ARG VERSION
 ENV \
     CNI_BIN_DIR=/host/opt/cni/bin
 
-RUN apk add --no-cache curl tar \
+RUN apk add --no-cache curl rsync tar \
     && mkdir -p /plugins /host/opt/cni/bin \
     && \
     case "${TARGETPLATFORM}" in \
