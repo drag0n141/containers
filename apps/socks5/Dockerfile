@@ -12,7 +12,6 @@ RUN \
         catatonit \
         dante-server~"${VERSION}"
 
-
 COPY ./apps/socks5/sockd.conf /app/sockd.conf
 COPY ./apps/socks5/entrypoint.sh /entrypoint.sh
 
