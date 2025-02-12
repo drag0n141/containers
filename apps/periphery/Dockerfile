@@ -12,10 +12,19 @@ RUN \
     && \
     apt-get install -y --no-install-recommends --no-install-suggests \
         ca-certificates \
-        wget \
+        curl \
     && \
-    wget -P /tmp/ https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb \
-    dpkg -i /tmp/1password-cli-$(dpkg --print-architecture)-latest.deb \
-    && rm -rf /var/lib/apt/lists/* /tmp/*
+    curl -fsSL -o /tmp/1password-cli.deb \
+        "https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb" \
+    && \
+    dpkg -i --force-confold /tmp/1password-cli.deb \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && \
+    rm -rf \
+        /tmp/* \
+        /var/lib/apt/lists/* \
+        /var/tmp/
 
 CMD [ "/usr/local/bin/periphery" ]
