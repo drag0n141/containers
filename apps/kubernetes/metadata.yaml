@@ -1,6 +1,6 @@
 ---
 app: kubernetes
-base: false
+semver: true
 channels:
   - name: kubectl
     platforms: ["linux/amd64", "linux/arm64"]

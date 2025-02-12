@@ -1,6 +1,6 @@
 ---
 app: home-assistant
-base: false
+semver: false
 channels:
   - name: stable
     platforms: ["linux/amd64", "linux/arm64"]
