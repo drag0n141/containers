@@ -19,6 +19,9 @@ RUN \
         jo \
         moreutils \
         wget \
+        zstd \
+    && curl -fsSL -o /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64" \
+    && chmod +x /usr/local/bin/yq \
     && rm -rf /var/lib/apt/lists/*
 
 USER runner
