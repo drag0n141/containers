@@ -1,5 +1,5 @@
 ARG VERSION
-FROM --platform=amd64 ghcr.io/mbecker20/periphery:${VERSION}
+FROM --platform=amd64 ghcr.io/moghtech/komodo-periphery:${VERSION}
 
 ENV DEBCONF_NONINTERACTIVE_SEEN=true \
     DEBIAN_FRONTEND="noninteractive" \
