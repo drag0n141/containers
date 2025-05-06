@@ -67,7 +67,7 @@ Each Image will be built with a `latest` tag, along with tags specific to it's v
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[cdpgvector](https://github.com/drag0n141/containers/pkgs/container/cdpgvector) | stable | ghcr.io/drag0n141/cdpgvector |![0.4.0](https://img.shields.io/badge/0.4.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[cdpgvector]() | stable | ghcr.io/drag0n141/cdpgvector |
 [getmail](https://github.com/drag0n141/containers/pkgs/container/getmail) | stable | ghcr.io/drag0n141/getmail |![6](https://img.shields.io/badge/6-blue?style=flat-square) ![6.19](https://img.shields.io/badge/6.19-blue?style=flat-square) ![6.19.07](https://img.shields.io/badge/6.19.07-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [periphery](https://github.com/drag0n141/containers/pkgs/container/periphery) | stable | ghcr.io/drag0n141/periphery |![1](https://img.shields.io/badge/1-blue?style=flat-square) ![1.17](https://img.shields.io/badge/1.17-blue?style=flat-square) ![1.17.5](https://img.shields.io/badge/1.17.5-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [whisparr-nightly](https://github.com/drag0n141/containers/pkgs/container/whisparr-nightly) | nightly | ghcr.io/drag0n141/whisparr-nightly |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.0](https://img.shields.io/badge/2.0-blue?style=flat-square) ![2.0.0](https://img.shields.io/badge/2.0.0-blue?style=flat-square) ![2.0.0.987](https://img.shields.io/badge/2.0.0.987-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
