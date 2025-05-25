@@ -1,0 +1,5 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml
+file:
+  /usr/pgsql-16/lib/vchord.so:
+    exists: true

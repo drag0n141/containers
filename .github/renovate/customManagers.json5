@@ -5,13 +5,11 @@
       "customType": "regex",
       "description": ["Process CrunchyData Postgres version"],
       "fileMatch": [
-        "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$"
+        "^Dockerfile$"
       ],
       "matchStrings": [
-        "FROM registry.developers.crunchydata.com\/crunchydata\/crunchy-postgres:ubi\d+-(?<currentValue>.*\-.*)"
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.*?\"(?<currentValue>.*)\"\\n"
       ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "redhat"
     }
   ]
 }
