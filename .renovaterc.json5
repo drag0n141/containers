@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>drag0n141/renovate-config",
+    "github>drag0n141/renovate-config:automerge-github-actions"
   ],
   "customManagers": [
     {
