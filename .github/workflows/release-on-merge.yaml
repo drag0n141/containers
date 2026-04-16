@@ -17,16 +17,16 @@ on:
 
 jobs:
   simple-checks:
-    uses: drag0n141/containers/.github/workflows/simple-checks.yaml@ea189114e22a66c73716502f08975ea9aeffb360 # master
+    uses: drag0n141/containers/.github/workflows/simple-checks.yaml@fd06ddcc3fcb5b209577f7762beb728ed13dbbb2 # master
 
   get-changed-images:
     needs: ["simple-checks"]
-    uses: drag0n141/containers/.github/workflows/get-changed-images.yaml@ea189114e22a66c73716502f08975ea9aeffb360 # master
+    uses: drag0n141/containers/.github/workflows/get-changed-images.yaml@fd06ddcc3fcb5b209577f7762beb728ed13dbbb2 # master
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: drag0n141/containers/.github/workflows/build-images.yaml@ea189114e22a66c73716502f08975ea9aeffb360 # master
+    uses: drag0n141/containers/.github/workflows/build-images.yaml@fd06ddcc3fcb5b209577f7762beb728ed13dbbb2 # master
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
