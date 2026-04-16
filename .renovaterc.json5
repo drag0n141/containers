@@ -1,18 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    "docker:enableMajor",
-    ":dependencyDashboard",
-    ":disableRateLimiting",
-    ":semanticCommits",
-    ":automergeDigest",
-    "github>drag0n141/containers//.renovate/autoMerge.json5",
-    "github>drag0n141/containers//.renovate/customManagers.json5",
+    "github>drag0n141/renovate-config",
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
-  "rebaseWhen": "conflicted",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": ["Process CrunchyData Postgres version"],
+      "fileMatch": [
+        "^Dockerfile$"
+      ],
+      "matchStrings": [
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.*?\"(?<currentValue>.*)\"\\n"
+      ],
+    }
+  ],
   "packageRules": [
     {
       "addLabels": ["renovate/container", "type/major"],
