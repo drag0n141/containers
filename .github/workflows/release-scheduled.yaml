@@ -24,12 +24,12 @@ on:
 jobs:
   simple-checks:
     name: Simple Checks
-    uses: drag0n141/containers/.github/workflows/simple-checks.yaml@fd06ddcc3fcb5b209577f7762beb728ed13dbbb2 # master
+    uses: drag0n141/containers/.github/workflows/simple-checks.yaml@22502089a4476f5322b26b56fc0bfff5f4a65664 # master
 
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: drag0n141/containers/.github/workflows/build-images.yaml@fd06ddcc3fcb5b209577f7762beb728ed13dbbb2 # master
+    uses: drag0n141/containers/.github/workflows/build-images.yaml@22502089a4476f5322b26b56fc0bfff5f4a65664 # master
     secrets: inherit
     permissions:
       contents: read
